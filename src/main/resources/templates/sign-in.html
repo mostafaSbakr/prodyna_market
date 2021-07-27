@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--    <meta charset="UTF-8">-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="assets/styles/sign-up.css">
+    <!--    <link rel="stylesheet" type="text/css" href="../static/assets/styles/sign-up.css"  th:href="@{/assets/styles/sign-up.css}" >-->
+    <script type="module" src="assets/scripts/signIn.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Please enter your user name and password</h1>
+    </header>
+    <section id="user-data">
+        <form>
+            <label>User Name:</label>
+            <input type="text" name="user-name" id="user-name-input">
+            <br>
+            <label>Password:</label>
+            <input type="password" name="password" id="password-input">
+            <br>
+            <label id="wrong-login-credentials" class="label hidden-label"></label>
+            <br>
+            <button type="submit" id="login-button">Login</button>
+        </form>
+    </section>
+    <section id="back-to-main">
+        <button id="back-to-main-button">Back to main</button>
+    </section>
+</body>
+
+</html>

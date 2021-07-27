@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>User Market</title>
+    <link rel="stylesheet" href="assets/styles/user-market.css">
+    <script type="module" src="assets/scripts/userMarket.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+        <h2>These are our current products</h2>
+    </header>
+    <section id="products-section">
+        <table id="products-table">
+            <tr id="header-row">
+                <th>Name</th>
+                <th>Price $</th>
+                <th>Quantity</th>
+            </tr>
+        </table>
+    </section>
+    <br>
+    <section id="buy-product">
+        <form>
+            <label for="product-name-label">Product Name</label>
+            <input type="text" name="product-name" id="product-name-label">
+            <br>
+
+            <label for="quantity-label">Quantity</label>
+            <input type="text" name="quantity" id="quantity-label">
+            <br>
+            <label id="no-product-label" class="label hidden-label"></label>
+            <br>
+            <button type="submit" id="add-to-cart-button" class="mt-5">Add to cart</button>
+        </form>
+    </section>
+    <section id="user-views">
+        <button id="view-my-orders-button">View my orders</button>
+        <br>
+        <button id="view-my-profile-button">View my profile</button>
+    </section>
+    <section id="back-to-main">
+        <button id="back-to-main-button">Back to main</button>
+    </section>
+
+    <section id="cart" class="hidden-section">
+        <ul>
+        </ul>
+        <label id="confirmed-label" class="hidden-label">Confirmed</label>
+        <button type="submit">Confirm</button>
+    </section>
+
+
+</body>
+
+</html>

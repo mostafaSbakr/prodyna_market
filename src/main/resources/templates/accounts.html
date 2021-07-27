@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Accounts</title>
+    <link rel="stylesheet" href="assets/styles/user-market.css">
+    <script type="module" src="assets/scripts/accounts.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>User Accounts</h1>
+    </header>
+
+    <section id="accounts-section">
+        <table id="accounts-table">
+            <tr id="header-row">
+                <th>User id</th>
+                <th>User Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Credit Card</th>
+            </tr>
+        </table>
+    </section>
+    <br>
+    <section id="delete-user-section">
+        <form>
+            <label>User Id</label>
+            <input type="text" name="user-id" id="user-id-input">
+            <br>
+            <label id="wrong-user-id-label" class="label hidden-label"></label>
+            <br>
+            <button type="submit" id="delete-user-button">Delete User</button>
+        </form>
+    </section>
+    <section id="back-to-admin-section">
+        <button>Admin Page</button>
+    </section>
+    <section id="back-to-main">
+        <button id="back-to-main-button">Back to main</button>
+    </section>
+
+
+
+</body>
+
+</html>

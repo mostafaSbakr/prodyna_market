@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--    <meta charset="UTF-8">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="assets/styles/sign-up.css">
+    <script type="module" src="assets/scripts/signUp.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Please enter your details below</h1>
+    </header>
+    <section id="new-user">
+        <form>
+            <input type="hidden" name="userId" id="userId">
+            <label for="first-name-label">First Name:</label>
+            <input type="text" name="first-name" id="first-name-input">
+            <br>
+            <label for="last-name-label">Last Name:</label>
+            <input type="text" name="last-name" id="last-name-input">
+            <br>
+            <label for="birth-date-label">Date of Birth:</label>
+            <input type="text" name="birth-date" id="birth-date-input">
+            <br>
+            <label for="phone-label">Phone:</label>
+            <input type="text" name="phone" id="phone-input">
+            <br>
+            <label for="address-label">Address:</label>
+            <input type="text" name="address" id="address-input">
+            <br>
+            <label for="email-label">Email:</label>
+            <input type="text" name="email" id="email-input">
+            <br>
+            <label for="user-name-label">User Name:</label>
+            <input type="text" name="user-name" id="user-name-input">
+            <br>
+            <label for="password-label">Password:</label>
+            <input type="password" name="password" id="password-input">
+            <br>
+            <label for="credit-card-label">Credit Card:</label>
+            <input type="text" name="credit-card" id="credit-card-input">
+            <br><br>
+            <button type="submit" id="save-login-button">Save and Login</button>
+        </form>
+    </section>
+    <section id="back-to-main">
+        <button id="back-to-main-button">Back to main</button>
+    </section>
+
+</body>
+
+</html>

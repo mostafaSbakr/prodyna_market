@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  mysqldatabase:
+    image: mysql:8.0.23
+    ports:
+      - 3307:3306
+    networks:
+      - mysqlnetwork
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: prodyna_market
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: ThePassword
+
+  prodyna_application:
+    image: prodyna_market:4.0
+    restart: on-failure
+    depends_on:
+      - mysqldatabase
+    ports:
+      - 8081:8081
+    networks:
+      - mysqlnetwork
+    environment:
+      MYSQL_HOST: mysqldatabase
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: ThePassword
+      MYSQL_DB: prodyna_market
+
+networks:
+  mysqlnetwork:

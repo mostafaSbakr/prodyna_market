@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="assets/styles/user-market.css">
+    <script type="module" src="assets/scripts/products.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Products</h1>
+    </header>
+    <section id="products-section">
+        <table id="products-table">
+            <tr id="header-row">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </table>
+    </section>
+    <br>
+    <section id="save-products-section">
+        <form>
+            <label>Product Name</label>
+            <input type="text" name="product-name" id="product-name-input">
+            <br>
+            <label>Price</label>
+            <input type="text" name="price" id="price-input">
+            <br>
+            <label>Quantity</label>
+            <input type="text" name="quantity" id="quantity-input">
+            <br><br>
+            <button type="submit" id="save-product-button">Save Product</button>
+        </form>
+    </section>
+    <section id="delete-products-section">
+        <form>
+            <label>Product Name</label>
+            <input type="text" name="delete-product-name" id="delete-product-name-input">
+            <br><br>
+            <button type="submit" id="delete-product-button">Delete Product</button>
+        </form>
+    </section>
+    <section id="back-to-admin-section">
+        <button>Admin Page</button>
+    </section>
+    <section id="back-to-main">
+        <button id="back-to-main-button">Back to main</button>
+    </section>
+
+
+</body>
+
+</html>
