@@ -1,7 +1,12 @@
 package com.prodyna.prodynamarket.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "products")
 public class Product {
@@ -11,52 +16,15 @@ public class Product {
     @Column(name = "product_id")
     private int id;
 
+    @NonNull
     private String name;
+    @NonNull
     private double price;
+    @NonNull
     private int quantity;
 
+//    TODO: add multiple orders to products
 //    @ManyToMany (mappedBy = "products")
 //    @OneToMany
 //    private List<Order> orders = new ArrayList<>();
-
-    public Product(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    public Product() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }
