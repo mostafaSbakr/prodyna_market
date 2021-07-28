@@ -19,9 +19,9 @@ public class OrderService {
         orderRepository.save(order);
     }
 
-    public List<Order> getOrdersById(int id) {
-        return orderRepository.findOrdersById(id);
-    } // check why?!!
+    public List<Order> getOrdersByUserId(int id) {
+        return orderRepository.findOrdersByUserId(id);
+    }
 
     public Order getOrder(int id) {
         if (orderRepository.findById(id).isPresent())

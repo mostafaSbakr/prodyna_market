@@ -50,6 +50,6 @@ public class OrdersController {
     @ResponseBody
     public List<Order> getUserOrders(@RequestParam String userName) {
         User user = userService.getUserByName(userName);
-        return orderService.getOrdersById(user.getUserId());
+        return orderService.getOrdersByUserId(user.getUserId());
     }
 }
