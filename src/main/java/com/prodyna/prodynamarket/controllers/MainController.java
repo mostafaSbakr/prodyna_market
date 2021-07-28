@@ -1,4 +1,4 @@
-package com.prodyna.prodynamarket.Controllers;
+package com.prodyna.prodynamarket.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

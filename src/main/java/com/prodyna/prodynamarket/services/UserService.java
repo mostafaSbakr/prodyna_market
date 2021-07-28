@@ -1,7 +1,7 @@
-package com.prodyna.prodynamarket.Services;
+package com.prodyna.prodynamarket.services;
 
-import com.prodyna.prodynamarket.Models.User;
-import com.prodyna.prodynamarket.Repositories.UserRepository;
+import com.prodyna.prodynamarket.models.User;
+import com.prodyna.prodynamarket.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

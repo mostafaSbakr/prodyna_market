@@ -1,11 +1,11 @@
-package com.prodyna.prodynamarket.Controllers;
+package com.prodyna.prodynamarket.controllers;
 
-import com.prodyna.prodynamarket.Models.Order;
-import com.prodyna.prodynamarket.Models.Product;
-import com.prodyna.prodynamarket.Models.User;
-import com.prodyna.prodynamarket.Services.OrderService;
-import com.prodyna.prodynamarket.Services.ProductService;
-import com.prodyna.prodynamarket.Services.UserService;
+import com.prodyna.prodynamarket.models.Order;
+import com.prodyna.prodynamarket.models.Product;
+import com.prodyna.prodynamarket.models.User;
+import com.prodyna.prodynamarket.services.OrderService;
+import com.prodyna.prodynamarket.services.ProductService;
+import com.prodyna.prodynamarket.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

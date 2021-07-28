@@ -1,4 +1,4 @@
-package com.prodyna.prodynamarket.Models;
+package com.prodyna.prodynamarket.models;
 
 import javax.persistence.*;
 

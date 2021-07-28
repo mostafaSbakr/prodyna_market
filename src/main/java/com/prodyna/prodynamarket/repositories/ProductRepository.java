@@ -1,6 +1,6 @@
-package com.prodyna.prodynamarket.Repositories;
+package com.prodyna.prodynamarket.repositories;
 
-import com.prodyna.prodynamarket.Models.Product;
+import com.prodyna.prodynamarket.models.Product;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
