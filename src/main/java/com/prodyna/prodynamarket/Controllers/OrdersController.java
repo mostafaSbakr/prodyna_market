@@ -33,7 +33,6 @@ public class OrdersController {
     public void addNewOrder(@RequestParam String name, @RequestParam String quantity, @RequestParam String userName) {
         // get product by name
         Product product = productService.getProductByName(name);
-        System.out.println("product ID: " + product.getId());
         int updatedQuantity = product.getQuantity() - Integer.parseInt(quantity);
 
         product.setQuantity(updatedQuantity);

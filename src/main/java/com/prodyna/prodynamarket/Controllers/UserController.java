@@ -16,7 +16,6 @@ public class UserController {
     @ResponseBody
     public void addNewUser(@RequestBody User user) {
         userService.createNewUser(user);
-        System.out.println("Added new user");
     }
 
     @PostMapping(path = "/user-page")

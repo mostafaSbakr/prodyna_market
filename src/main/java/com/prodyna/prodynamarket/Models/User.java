@@ -37,6 +37,7 @@ public class User {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
         this.phone = phone;
         this.address = address;
         this.email = email;

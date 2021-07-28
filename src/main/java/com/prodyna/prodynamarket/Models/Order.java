@@ -19,6 +19,7 @@ public class Order {
     @Column(name = "order_date")
     private Date orderDate;
 
+//    TODO: modify frontend to accept multiple products in order
 //    @ManyToMany
 //    @JoinTable(name = "order_details")
 //    private List<Product> products = new ArrayList<>();
@@ -36,13 +37,16 @@ public class Order {
         this.price = price;
     }
 
-    public int getOrderId() { return orderId; }
+    public int getOrderId() {
+        return orderId;
+    }
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public Order() { }
+    public Order() {
+    }
 
     public User getUser() {
         return user;

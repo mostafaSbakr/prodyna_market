@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface OrderRepository  extends CrudRepository<Order, Integer> {
 
-    // check whether orders
     @Query ("FROM Order WHERE user_id = ?1")
     List<Order> findOrdersById(int id);
 }

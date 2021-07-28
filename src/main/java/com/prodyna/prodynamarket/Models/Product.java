@@ -1,16 +1,14 @@
 package com.prodyna.prodynamarket.Models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 public class Product {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    @Column (name = "product_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_id")
     private int id;
 
     private String name;
@@ -25,7 +23,6 @@ public class Product {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-//        this.orders = orders;
     }
 
     public Product() {
@@ -38,14 +35,6 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
-
-//    public List<Order> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(List<Order> orders) {
-//        this.orders = orders;
-//    }
 
     public String getName() {
         return name;
