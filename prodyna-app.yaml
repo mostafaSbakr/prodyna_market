@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: ThePassword
 
   prodyna_application:
-    image: prodyna_market:4.0
+    image: mostafabakr/prodyna_market:4.0
     restart: on-failure
     depends_on:
       - mysqldatabase
