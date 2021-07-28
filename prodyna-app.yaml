@@ -6,6 +6,8 @@ services:
       - 3307:3306
     networks:
       - mysqlnetwork
+    volumes:
+      - db-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: prodyna_market
@@ -21,11 +23,21 @@ services:
       - 8081:8081
     networks:
       - mysqlnetwork
+    command: ./docker-entrypoint.sh #doesnt work check!
     environment:
-      MYSQL_HOST: mysqldatabase
-      MYSQL_USER: springuser
-      MYSQL_PASSWORD: ThePassword
-      MYSQL_DB: prodyna_market
+      DATABASE_HOST: mysqldatabase
+      DATABASE_USER: springuser
+      DATABASE_PASSWORD: ThePassword
+      DATABASE_NAME: prodyna_market
+      DATABASE_PORT: 3306
+#      MYSQL_HOST: mysqldatabase
+#      MYSQL_USER: springuser
+#      MYSQL_PASSWORD: ThePassword
+#      MYSQL_DB: prodyna_market
 
 networks:
   mysqlnetwork:
+
+volumes:
+  db-data:
+    driver: local
