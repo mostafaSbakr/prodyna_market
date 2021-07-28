@@ -10,7 +10,7 @@ window.onload = () => {
         .then(response => {
             console.log(response);
             for (const order of response)
-                renderNewTableRow(order.orderId, order.products.name, order.price, order.orderDate)
+                renderNewTableRow(order.orderId, order.product.name, order.price, order.orderDate)
 
         });
 }
