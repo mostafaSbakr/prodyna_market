@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -24,8 +25,9 @@ public class OrderService {
     }
 
     public Order getOrder(int id) {
-        if (orderRepository.findById(id).isPresent())
-            return orderRepository.findById(id).get();
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isPresent())
+            return order.get();
         else
             throw new NoSuchElementException();
     }
