@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping(path = "/main")
-    public String redirectMainPage() {
-        return "main";
-    }
+    public String redirectMainPage() { return "main"; }
 
     @GetMapping(path = "/sign-in")
     public String redirectSignInPage() {
@@ -37,7 +35,7 @@ public class MainController {
     }
 
     @GetMapping(path = "/products")
-    public String redirectProductsPage()  {
+    public String redirectProductsPage() {
         return "products";
     }
 
@@ -47,7 +45,7 @@ public class MainController {
     }
 
     @GetMapping(path = "/user-orders")
-    public String redirectUserOrdersPage() { return "user-orders";  }
+    public String redirectUserOrdersPage() { return "user-orders"; }
 
     @GetMapping(path = "/user-profile")
     public String redirectUserProfilePage() { return "user-profile"; }

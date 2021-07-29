@@ -1,11 +1,13 @@
 package com.prodyna.prodynamarket.controllers;
 
+import com.prodyna.prodynamarket.dtos.OrderDto;
 import com.prodyna.prodynamarket.models.Order;
 import com.prodyna.prodynamarket.models.Product;
 import com.prodyna.prodynamarket.models.User;
 import com.prodyna.prodynamarket.services.OrderService;
 import com.prodyna.prodynamarket.services.ProductService;
 import com.prodyna.prodynamarket.services.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class OrdersController {
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     OrderService orderService;
@@ -48,8 +54,10 @@ public class OrdersController {
 
     @GetMapping(path = "/get-user-orders")
     @ResponseBody
-    public List<Order> getUserOrders(@RequestParam String userName) {
+    public List<OrderDto> getUserOrders(@RequestParam String userName) {
         User user = userService.getUserByName(userName);
-        return orderService.getOrdersByUserId(user.getUserId());
+        return orderService.getOrdersByUserId(user.getUserId()).stream()
+                .map(order -> modelMapper.map(order, OrderDto.class))
+                .collect(Collectors.toList());
     }
 }
