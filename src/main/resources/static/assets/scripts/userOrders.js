@@ -11,7 +11,6 @@ window.onload = () => {
             console.log(response);
             for (const order of response)
                 renderNewTableRow(order.orderId, order.product.name, order.price, order.orderDate)
-
         });
 }
 
