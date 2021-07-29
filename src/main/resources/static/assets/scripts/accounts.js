@@ -49,7 +49,10 @@ deleteUserForm.addEventListener('submit', event => {
         warningLabel.style.visibility = "hidden";
         warningLabel.textContent = '';
         httpHandler.sendHttpRequest('DELETE', httpHandler.urlPrefix + 'delete-user?userId=' + userId.value, 'json')
-            .then(() => deleteTableRow(userId.value));
+            .then(response => {
+                console.log(response);
+                deleteTableRow(userId.value)
+            });
     }
 });
 

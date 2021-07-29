@@ -5,6 +5,8 @@ import com.prodyna.prodynamarket.models.User;
 import com.prodyna.prodynamarket.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,42 +21,41 @@ public class UserController {
 
     @PostMapping(path = "/new-user")
     @ResponseBody
-    public void addNewUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<Void> addNewUser(@RequestBody UserDto userDto) {
         User user = modelMapper.map(userDto, User.class);
         userService.createNewUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
     @PostMapping(path = "/user-page")
     @ResponseBody
-    public boolean loginUser(@RequestParam String userName, @RequestParam String password) {
-        return userService.authenticateUser(userName, password);
+    public ResponseEntity<Boolean> loginUser(@RequestParam String userName, @RequestParam String password) {
+        return userService.authenticateUser(userName, password) ?
+                new ResponseEntity<>(true, HttpStatus.OK) :
+                new ResponseEntity<>(false, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/delete-user")
     @ResponseBody
-    public void deleteUser(@RequestParam String userId) {
-        userService.deleteUser(Integer.parseInt(userId));
+    public ResponseEntity<Boolean> deleteUser(@RequestParam String userId) {
+        try {
+            userService.deleteUser(Integer.parseInt(userId));
+            return ResponseEntity.status(HttpStatus.OK).body(true);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        }
     }
 
     @GetMapping(path = "/get-user")
     @ResponseBody
-    public UserDto getUser(@RequestParam String userName) {
-        User user = userService.getUserByName(userName);
-        return modelMapper.map(user, UserDto.class);
+    public ResponseEntity<UserDto> getUser(@RequestParam String userName) {
+        try {
+            User user = userService.getUserByName(userName);
+            return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(user, UserDto.class));
+        } catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 }
-//    @GetMapping(path = "/get-user")
-//    @ResponseBody
-//    public ResponseEntity<User> getUser(@RequestParam String userName) {
-//        ResponseEntity<User> response = ResponseEntity.badRequest().build();
-//        if(!userName.isBlank()){
-//            User user = userService.getUserByName(userName);
-//            if (user == null) {
-//                response = ResponseEntity.notFound().build();
-//            } else {
-//                response = ResponseEntity.ok(userService.getUserByName(userName));
-//            }
-//        }
-//        return response;
-//    }
+
 

@@ -9,6 +9,8 @@ import com.prodyna.prodynamarket.services.ProductService;
 import com.prodyna.prodynamarket.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,28 +38,38 @@ public class OrdersController {
 
     @PostMapping(path = "/new-order")
     @ResponseBody
-    public void addNewOrder(@RequestParam String name, @RequestParam String quantity, @RequestParam String userName) {
-        // get product by name
-        Product product = productService.getProductByName(name);
-        int updatedQuantity = product.getQuantity() - Integer.parseInt(quantity);
+    public ResponseEntity<Void> addNewOrder(@RequestParam String name, @RequestParam String quantity, @RequestParam String userName) {
+        try {
+            // get product by name
+            Product product = productService.getProductByName(name);
+            int updatedQuantity = product.getQuantity() - Integer.parseInt(quantity);
 
-        product.setQuantity(updatedQuantity);
-        productService.updateProduct(product);
+            product.setQuantity(updatedQuantity);
+            productService.updateProduct(product);
 
-        double orderPrice = product.getPrice() * Double.parseDouble(quantity);
-        // get user
-        User user = userService.getUserByName(userName);
+            double orderPrice = product.getPrice() * Double.parseDouble(quantity);
+            // get user
+            User user = userService.getUserByName(userName);
 
-        Order newOrder = new Order(user, Calendar.getInstance().getTime(), product, orderPrice);
-        orderService.createNewOrder(newOrder);
+            Order newOrder = new Order(user, Calendar.getInstance().getTime(), product, orderPrice);
+            orderService.createNewOrder(newOrder);
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 
     @GetMapping(path = "/get-user-orders")
     @ResponseBody
-    public List<OrderDto> getUserOrders(@RequestParam String userName) {
-        User user = userService.getUserByName(userName);
-        return orderService.getOrdersByUserId(user.getUserId()).stream()
-                .map(order -> modelMapper.map(order, OrderDto.class))
-                .collect(Collectors.toList());
+    public ResponseEntity<List<OrderDto>> getUserOrders(@RequestParam String userName) {
+        try {
+            User user = userService.getUserByName(userName);
+            List<OrderDto> orders = orderService.getOrdersByUserId(user.getUserId()).stream()
+                    .map(order -> modelMapper.map(order, OrderDto.class))
+                    .collect(Collectors.toList());
+               return ResponseEntity.status(HttpStatus.OK).body(orders);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 }

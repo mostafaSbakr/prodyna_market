@@ -30,7 +30,7 @@ services:
       DATABASE_PASSWORD: ThePassword
       DATABASE_NAME: prodyna_market
       DATABASE_PORT: 3306
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldatabase:3306/prodyna_market 
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldatabase:3306/prodyna_market
 #      MYSQL_HOST: mysqldatabase
 #      MYSQL_USER: springuser
 #      MYSQL_PASSWORD: ThePassword
