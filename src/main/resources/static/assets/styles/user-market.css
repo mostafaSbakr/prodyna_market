@@ -15,7 +15,7 @@ label {
 }
 
 .hidden-label {
-    width: 300px;
+    width: 400px;
     visibility: hidden;
     color: red;
     text-align: center;

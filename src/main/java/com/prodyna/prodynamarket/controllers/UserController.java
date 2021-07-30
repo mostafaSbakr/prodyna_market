@@ -21,10 +21,15 @@ public class UserController {
 
     @PostMapping(path = "/new-user")
     @ResponseBody
-    public ResponseEntity<Void> addNewUser(@RequestBody UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
-        userService.createNewUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+    public ResponseEntity<Boolean> addNewUser(@RequestBody UserDto userDto) {
+        try {
+            User user = modelMapper.map(userDto, User.class);
+            userService.createNewUser(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        }
     }
 
     @PostMapping(path = "/user-page")
@@ -52,7 +57,7 @@ public class UserController {
         try {
             User user = userService.getUserByName(userName);
             return ResponseEntity.status(HttpStatus.OK).body(modelMapper.map(user, UserDto.class));
-        } catch (Exception ex){
+        } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

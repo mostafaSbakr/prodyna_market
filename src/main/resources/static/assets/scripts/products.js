@@ -34,7 +34,14 @@ saveProductForm.addEventListener('submit', event => {
         wrongProductInfoLabel.style.visibility = 'hidden';
         const product = new Product(productData[0].value, productData[1].value, productData[2].value);
         httpHandler.sendHttpRequest('POST', httpHandler.urlPrefix + 'save-product', 'json', product)
-            .then(() => renderNewTableRow(productData[0].value, productData[1].value, productData[2].value));
+            .then(response => {
+                if (response) {
+                    renderNewTableRow(productData[0].value, productData[1].value, productData[2].value)
+                } else {
+                    wrongProductInfoLabel.style.visibility = 'visible';
+                    wrongProductInfoLabel.textContent = 'duplicate product name';
+                }
+            });
     }
 
 })

@@ -35,8 +35,14 @@ public class AdminController {
 
     @PostMapping(path = "/save-product")
     @ResponseBody
-    public void saveProduct(@RequestBody ProductDto product) {
-        productService.createNewProduct(modelMapper.map(product, Product.class));
+    public ResponseEntity<Boolean> saveProduct(@RequestBody ProductDto product) {
+        try {
+            productService.createNewProduct(modelMapper.map(product, Product.class));
+            return ResponseEntity.status(HttpStatus.CREATED).body(true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
+        }
     }
 
     @DeleteMapping(path = "/delete-product")

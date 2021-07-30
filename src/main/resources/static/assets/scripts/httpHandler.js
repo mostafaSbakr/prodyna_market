@@ -5,7 +5,7 @@ export const sendHttpRequest = (method, url, responseType, data) => {
         xmlHttpRequest.responseType = responseType;
         xmlHttpRequest.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
         xmlHttpRequest.onload = () => {
-            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
+            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 500) {
                 resolve(xmlHttpRequest.response);
             } else {
                 reject(new Error('Something went wrong!'));

@@ -55,6 +55,7 @@ public class OrdersController {
             orderService.createNewOrder(newOrder);
             return ResponseEntity.status(HttpStatus.OK).body(null);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

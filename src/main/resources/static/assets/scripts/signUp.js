@@ -24,7 +24,7 @@ class User {
 const form = document.querySelector('#new-user form');
 
 const inputs = form.querySelectorAll('input');
-console.log(inputs);
+// console.log(inputs);
 
 if (user) {
     inputs[0].value = user.userId;
@@ -42,14 +42,23 @@ if (user) {
 // Save and Login Button
 form.addEventListener('submit', event => {
     event.preventDefault();
+    const signUpErrorLabel = event.currentTarget.querySelector('#sign-up-error-label');
     const newUser = new User(inputs[0].value, inputs[1].value, inputs[2].value,
         inputs[3].value, inputs[4].value, inputs[5].value,
         inputs[6].value, inputs[7].value, inputs[8].value, inputs[9].value);
-    console.log(newUser);
+    // console.log(newUser);
     httpHandler.sendHttpRequest('POST', httpHandler.urlPrefix + '/new-user', 'json', newUser)
-        .then(() => {
-            httpHandler.redirect(httpHandler.urlPrefix + 'sign-in')
-            sessionStorage.setItem('newUserName', newUser.userName);
+        .then(respose => {
+            if (respose) {
+                console.log(respose);
+                signUpErrorLabel.style.visibility = "hidden";
+                sessionStorage.setItem('newUserName', newUser.userName);
+                httpHandler.redirect(httpHandler.urlPrefix + 'sign-in')
+            } else {
+                signUpErrorLabel.style.visibility = "visible";
+                signUpErrorLabel.textContent = 'sign up error';
+            }
+            console.log(respose);
         });
 })
 
