@@ -16,7 +16,6 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    //    TODO --> no duplicate product name
     public void createNewProduct(Product product) {
         productRepository.save(product);
     }

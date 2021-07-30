@@ -16,7 +16,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //    TODO --> no duplicate user name
     public void createNewUser(User user) {
         userRepository.save(user);
     }

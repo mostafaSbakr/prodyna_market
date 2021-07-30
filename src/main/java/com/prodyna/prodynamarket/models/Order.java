@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMin;
 
 @Data
 @NoArgsConstructor
@@ -23,22 +25,20 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @NonNull
+    @Valid
     private User user;
 
     @Column(name = "order_date")
     @NonNull
     private Date orderDate;
 
-//    TODO: modify frontend to accept multiple products in order
-//    @ManyToMany
-//    @JoinTable(name = "order_details")
-//    private List<Product> products = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "product_id")
     @NonNull
+    @Valid
     private Product product;
 
     @NonNull
+    @DecimalMin(value = "0.01")
     private double price;
 }

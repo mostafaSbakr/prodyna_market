@@ -3,12 +3,15 @@ package com.prodyna.prodynamarket.models;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "products")
+@Table(name = "products", uniqueConstraints = {@UniqueConstraint(columnNames = "name", name = "uniqueNameConstraint")})
 public class Product {
 
     @Id
@@ -17,14 +20,14 @@ public class Product {
     private int id;
 
     @NonNull
+    @NotBlank
     private String name;
-    @NonNull
-    private double price;
-    @NonNull
-    private int quantity;
 
-//    TODO: add multiple orders to products
-//    @ManyToMany (mappedBy = "products")
-//    @OneToMany
-//    private List<Order> orders = new ArrayList<>();
+    @NonNull
+    @DecimalMin(value = "0.01")
+    private double price;
+
+    @NonNull
+    @Min(value = 1)
+    private int quantity;
 }
